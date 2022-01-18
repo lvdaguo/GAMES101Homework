@@ -6,7 +6,9 @@
 const double pi = std::acos(-1);
 auto deg2rad = [](double deg) { return deg / 180.0 * pi; };
 
+// get 2d rotation matrix
 Eigen::Matrix3f rotation3f(const double);
+// get 2d translation matrix
 Eigen::Matrix3f translation3f(const double, const double);
 
 int main() {
