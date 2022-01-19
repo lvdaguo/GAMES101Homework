@@ -25,15 +25,31 @@ Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
 Eigen::Matrix4f get_model_matrix(float rotation_angle)
 {
     Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
+    // Eigen::Matrix4f z_rot = get_rotation_matrix(z_axis, rotation_angle);
+    // model = z_rot * model;
     return model;
 }
 
 Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio, float zNear, float zFar)
 {
     // TODO: Copy-paste your implementation from the previous assignment.
-    Eigen::Matrix4f projection;
+    Eigen::Matrix4f projection = Eigen::Matrix4f::Identity();
+    const double half_fov_deg = eye_fov / 2, half_fov_rad = deg2rad(half_fov_deg);
+    const double n = -zNear, f = -zFar;
+    const double t = abs(n * tan(half_fov_rad)), b = -t;
+    const double r = abs(t * aspect_ratio), l = -r;
 
-    return projection;
+    Eigen::Matrix4f persp;
+    persp << n, 0, 0, 0,
+             0, n, 0, 0,
+             0, 0, n + f, -n * f,
+             0, 0, 1, 0;
+
+    Eigen::Matrix4f ortho_translation = get_translation_matrix(-(l + r) / 2, -(b + t) / 2, -(f + n) / 2);
+    Eigen::Matrix4f ortho_scale = get_scale_matrix(2 / (r - l), 2 / (t - b), 2 / (n - f));
+    Eigen::Matrix4f ortho = ortho_scale * ortho_translation;
+
+    return ortho * persp * projection;
 }
 
 int main(int argc, const char** argv)
@@ -88,6 +104,8 @@ int main(int argc, const char** argv)
 
     if (command_line)
     {
+        std::cout << "ssaa_on: " << ssaa_on << std::endl;
+
         r.clear(rst::Buffers::Color | rst::Buffers::Depth);
 
         r.set_model(get_model_matrix(angle));
@@ -121,6 +139,8 @@ int main(int argc, const char** argv)
         key = cv::waitKey(10);
 
         std::cout << "frame count: " << frame_count++ << '\n';
+        if (key == ' ') ssaa_on = ssaa_on == false;
+        std::cout << "ssaa_on: " << ssaa_on << std::endl;
     }
 
     return 0;

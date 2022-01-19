@@ -81,6 +81,9 @@ namespace rst
 
         // VERTEX SHADER -> MVP -> Clipping -> /.W -> VIEWPORT -> DRAWLINE/DRAWTRI -> FRAGSHADER
 
+        // self define
+        void merge();
+
     private:
         Eigen::Matrix4f model;
         Eigen::Matrix4f view;
@@ -93,6 +96,11 @@ namespace rst
         std::vector<Eigen::Vector3f> frame_buf;
 
         std::vector<float> depth_buf;
+
+        // self define
+        std::map<int, std::vector<Eigen::Vector3f>> ssaa_frame_buf;
+        std::map<int, std::vector<float>> ssaa_depth_buf;
+
         int get_index(int x, int y);
 
         int width, height;
