@@ -4,6 +4,9 @@
 #include "Light.hpp"
 #include "Renderer.hpp"
 
+// GAMES101 作业五 代码框架细节的个人理解 - 飘渺的离的文章 - 知乎
+// https://zhuanlan.zhihu.com/p/438520487
+
 // In the main function of the program, we create the scene (create objects and lights)
 // as well as set the options for the render (image width and height, maximum recursion
 // depth, field-of-view, etc.). We then call the render function().
@@ -12,12 +15,12 @@ int main()
     Scene scene(1280, 960);
 
     auto sph1 = std::make_unique<Sphere>(Vector3f(-1, 0, -12), 2);
-    sph1->materialType = DIFFUSE_AND_GLOSSY;
+    sph1->materialType = DIFFUSE_AND_GLOSSY; // cu cao
     sph1->diffuseColor = Vector3f(0.6, 0.7, 0.8);
 
     auto sph2 = std::make_unique<Sphere>(Vector3f(0.5, -0.5, -8), 1.5);
     sph2->ior = 1.5;
-    sph2->materialType = REFLECTION_AND_REFRACTION;
+    sph2->materialType = REFLECTION_AND_REFRACTION; // tou ming
 
     scene.Add(std::move(sph1));
     scene.Add(std::move(sph2));
