@@ -1,0 +1,76 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5bf6c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5bf6c.dir/build.make CMakeFiles/cmTC_5bf6c.dir/build
+make[1]: Entering directory '/home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5bf6c.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_5bf6c.dir/CheckSymbolExists.c.o   -c /home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_5bf6c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5bf6c.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_5bf6c.dir/CheckSymbolExists.c.o  -o cmTC_5bf6c 
+CMakeFiles/cmTC_5bf6c.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_5bf6c.dir/build.make:97: recipe for target 'cmTC_5bf6c' failed
+make[1]: *** [cmTC_5bf6c] Error 1
+make[1]: Leaving directory '/home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_5bf6c/fast' failed
+make: *** [cmTC_5bf6c/fast] Error 2
+
+File /home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_140e4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_140e4.dir/build.make CMakeFiles/cmTC_140e4.dir/build
+make[1]: Entering directory '/home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_140e4.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_140e4.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_140e4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_140e4.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_140e4.dir/CheckFunctionExists.c.o  -o cmTC_140e4 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_140e4.dir/build.make:97: recipe for target 'cmTC_140e4' failed
+make[1]: *** [cmTC_140e4] Error 1
+make[1]: Leaving directory '/home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_140e4/fast' failed
+make: *** [cmTC_140e4/fast] Error 2
+
+
+Determining if the function glXGetProcAddressEXT exists failed with the following output:
+Change Dir: /home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_58360/fast"
+/usr/bin/make -f CMakeFiles/cmTC_58360.dir/build.make CMakeFiles/cmTC_58360.dir/build
+make[1]: Entering directory '/home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_58360.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=glXGetProcAddressEXT   -o CMakeFiles/cmTC_58360.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_58360
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_58360.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=glXGetProcAddressEXT    -rdynamic CMakeFiles/cmTC_58360.dir/CheckFunctionExists.c.o  -o cmTC_58360 /usr/lib/x86_64-linux-gnu/libGL.so 
+CMakeFiles/cmTC_58360.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `glXGetProcAddressEXT'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_58360.dir/build.make:98: recipe for target 'cmTC_58360' failed
+make[1]: *** [cmTC_58360] Error 1
+make[1]: Leaving directory '/home/cs18/Desktop/GAMES101/Assignment8/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_58360/fast' failed
+make: *** [cmTC_58360/fast] Error 2
+
+
